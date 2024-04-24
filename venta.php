@@ -1,5 +1,5 @@
 <?php
-require 'controlpanel.php'; 
+require 'controlpanel.php';
 
 session_start();
 
@@ -7,7 +7,8 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-function agregarAlCarrito($producto) {
+function agregarAlCarrito($producto)
+{
     foreach ($_SESSION['carrito'] as $index => $item) {
         if ($item['id'] == $producto['id']) {
             $_SESSION['carrito'][$index]['cantidad'] += $producto['cantidad'];
@@ -17,7 +18,8 @@ function agregarAlCarrito($producto) {
     $_SESSION['carrito'][] = $producto;
 }
 
-function quitarDelCarrito($producto_id) {
+function quitarDelCarrito($producto_id)
+{
     foreach ($_SESSION['carrito'] as $index => $item) {
         if ($item['id'] == $producto_id) {
             unset($_SESSION['carrito'][$index]);
@@ -47,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        $_SESSION['carrito'] = []; 
+        $_SESSION['carrito'] = [];
 
         echo "<script>alert('Venta confirmada');</script>";
     }
@@ -74,39 +76,43 @@ foreach ($_SESSION['carrito'] as $item) {
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-        
-        <div style="float:right; margin-top: 0; margin-right: 20px;">
-                <h3>Total: $<?php echo $total; ?></h3>
-                <form method="post">
-                    <button type="submit" name="confirmar_venta" class="btn btn-success btn-lg">Confirmar Venta</button>
-                </form>
-            </div>
 
-            <div class="container" style="margin-top: 40px;">
-                <h1>Ventas</h1>
-
-                <div class="form-group">
-                    <label for="buscar"></label>
-                    <input type="text" class="form-control-lg" id="buscar" placeholder="Buscar producto..." style="font-size: 30px; padding: 10px 15px; width: 100%;">
-                    <div id="resultados"></div>
+            <div class="container" style="position: sticky;">
+                <div class="container" >
+                    <div>
+                        <h1>Total: $<?php echo $total; ?></h1>
+                        <form method="post">
+                            <button type="submit" name="confirmar_venta" class="btn btn-success btn-lg" style="font-size: 25px;">Confirmar Venta</button>
+                        </form>
+                    </div>
                 </div>
 
-                <h2>LISTA DE COMPRAS</h2>
-                <div class="card-body">
-                                  
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>NOMBRE</th>
-                            <th>CANTIDAD</th>
-                            <th>PRECIO</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($_SESSION['carrito'] as $item) {
-                            echo "<tr>
+
+                <div class="card" style="margin: 30px 20px;">
+                    <h1>Ventas</h1>
+
+                    <div class="form-group">
+                        <label for="buscar"></label>
+                        <input type="text" class="form-control-lg" id="buscar" placeholder="Buscar producto..." style="font-size: 30px; padding: 10px 15px; width: 95%;">
+                        <div id="resultados"></div>
+                    </div>
+
+                    <h2>LISTA DE COMPRAS</h2>
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>CANTIDAD</th>
+                                    <th>PRECIO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($_SESSION['carrito'] as $item) {
+                                    echo "<tr>
                                     <td>{$item['nombre']}</td>
                                     <td>{$item['cantidad']}</td>
                                     <td>{$item['precio']}</td>
@@ -117,29 +123,29 @@ foreach ($_SESSION['carrito'] as $item) {
                                         </form>
                                     </td>
                                   </tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
         </main>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    var productos = <?php echo json_encode($productos); ?>;
+    $(document).ready(function() {
+        var productos = <?php echo json_encode($productos); ?>;
 
-    $('#buscar').on('input', function() {
-        var query = $(this).val().toLowerCase();
-        var resultados = '';
+        $('#buscar').on('input', function() {
+            var query = $(this).val().toLowerCase();
+            var resultados = '';
 
-        if (query !== '') {
-            resultados = productos
-                .filter(producto => producto.nombre.toLowerCase().includes(query))
-                .map(producto => `<div>
+            if (query !== '') {
+                resultados = productos
+                    .filter(producto => producto.nombre.toLowerCase().includes(query))
+                    .map(producto => `<div>
                                     ${producto.nombre} - ${producto.precio}
                                     <form method='post' style='display:inline; 'font-size: 30px;'>
                                         <input type='hidden' name='id' value='${producto.id}'>
@@ -149,10 +155,10 @@ $(document).ready(function() {
                                         <button type='submit' name='agregar' class='btn btn-success'>Agregar</button>
                                     </form>
                                   </div>`)
-                .join('');
-        }
+                    .join('');
+            }
 
-        $('#resultados').html(resultados);
+            $('#resultados').html(resultados);
+        });
     });
-});
 </script>

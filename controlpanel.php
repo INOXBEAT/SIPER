@@ -97,7 +97,7 @@ mysqli_free_result($resultado);
                             updateTime();
                         </script>
 
-                        <div class="sb-sidenav-menu-heading">OPCIONES</div>
+                        <div class="sb-sidenav-menu-heading"></div>
 
                         <a class="nav-link" href="productos.php">
                             <div class="sb-nav-link-icon">
@@ -142,9 +142,9 @@ mysqli_free_result($resultado);
 
                         <?php } ?>
 
-                        <br><br><br><br>
+                        <br><br>
 
-                        <a class="nav-link btn btn-danger fixed-bottom" href="logout.php" style="font-size: 20px">
+                        <a class="nav-link btn btn-danger position-relative bottom-0" href="logout.php" style="font-size: 20px">
                             <div class="sb-nav-link-icon">
                                 <i class="fa-solid fa-circle-xmark"></i>
                             </div><b>CERRAR SESIÓN</b>
