@@ -89,8 +89,7 @@ foreach ($_SESSION['carrito'] as $item) {
 
 
                 <div class="card" style="margin: 30px 20px;">
-                    <h1>Ventas</h1>
-
+                   
                     <div class="form-group">
                         <label for="buscar"></label>
                         <input type="text" class="form-control-lg" id="buscar" placeholder="Buscar producto..." style="font-size: 30px; padding: 10px 15px; width: 95%;">
@@ -115,7 +114,7 @@ foreach ($_SESSION['carrito'] as $item) {
                                     echo "<tr>
                                     <td>{$item['nombre']}</td>
                                     <td>{$item['cantidad']}</td>
-                                    <td>{$item['precio']}</td>
+                                    <td>\${$item['precio']}</td>
                                     <td>
                                         <form method='post' style='display:inline;'>
                                             <input type='hidden' name='producto_id' value='{$item['id']}'>

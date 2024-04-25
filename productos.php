@@ -48,7 +48,6 @@ if (!$resultado) {
                     <table id="datatablesSimple" style="font-size: 20px;">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>DESCRIPCIÓN</th>
                                 <th>CANTIDAD</th>
@@ -62,11 +61,10 @@ if (!$resultado) {
                             <?php
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                                 echo "<tr>
-                        <td>{$fila['id']}</td>
                         <td>{$fila['nombre']}</td>
                         <td>{$fila['descripcion']}</td>
                         <td>{$fila['cantidad']}</td>
-                        <td>{$fila['precio']}</td>";
+                        <td>\${$fila['precio']}</td>";
                                 if ($tipo_usuario == 1) {
                                     echo "<td>
                             <a href='editar_producto.php?id={$fila['id']}' class='btn btn-primary'>Editar</a>

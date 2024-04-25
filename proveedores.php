@@ -50,7 +50,6 @@ if (!$resultado) {
                     <table id="datatablesSimple" style="font-size: 20px;">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Contacto</th>
                                 <th>Dirección</th>
                                 <th>Empresa</th>
@@ -62,7 +61,6 @@ if (!$resultado) {
                             <?php
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                                 echo "<tr>
-                        <td>{$fila['id']}</td>
                         <td>{$fila['contacto']}</td>
                         <td>{$fila['direccion']}</td>
                         <td>{$fila['proveedor']}</td>
