@@ -105,10 +105,10 @@ mysqli_free_result($resultado);
                             </div>PRODUCTOS
                         </a>
 
-                        <a class="nav-link" href="venta.php">
+                        <a class="nav-link btn btn-success" href="venta.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa-solid fa-dollar-sign" style="margin-right: 8px;"></i>
-                            </div>VENTAS
+                            </div><b>VENTAS</b>
                         </a>
 
                         <!-- ACCESO ÚNICAMENTE PARA ADMINISTRADOR -->

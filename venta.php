@@ -96,7 +96,6 @@ foreach ($_SESSION['carrito'] as $item) {
                         <div id="resultados"></div>
                     </div>
 
-                    <h2>LISTA DE COMPRAS</h2>
                     <div class="card-body">
 
                         <table class="table">
