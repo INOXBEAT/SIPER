@@ -45,7 +45,7 @@ if (!$resultado) {
                 </div>
 
                 <div class="card-body">
-                    <table id="datatablesSimple" style="font-size: 20px;">
+                    <table id="datatablesSimple" style="font-size: 25px;">
                         <thead>
                             <tr>
                                 <th>NOMBRE</th>
@@ -57,7 +57,7 @@ if (!$resultado) {
                                 <?php } ?>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 25px;">
                             <?php
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                                 echo "<tr>

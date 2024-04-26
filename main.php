@@ -47,7 +47,7 @@ while ($row = $resultado_acabandose->fetch_assoc()) {
                 <div class="card-header" style="font-size: 40px;"><b>POR ACABAR</b></div>
                 <div class="card-body">
                     <div class="container bg-white">
-                        <table id="productos_acabandose" class="table table-bordered table-hover">
+                        <table id="productos_acabandose" class="table table-bordered table-hover" style="font-size: 25px;">
                             <thead>
                                 <tr>
                                     <th>PRODUCTO</th>
@@ -71,7 +71,7 @@ while ($row = $resultado_acabandose->fetch_assoc()) {
                 <div class="card-header" style="font-size: 40px;"><b>EXCEDENTES</b></div>
                 <div class="card-body">
                     <div class="container bg-white">
-                        <table id="productos_excedentes" class="table table-bordered table-hover">
+                        <table id="productos_excedentes" class="table table-bordered table-hover" style="font-size: 25px;">
                             <thead>
                                 <tr>
                                     <th>PRODUCTO</th>
