@@ -116,7 +116,7 @@ foreach ($_SESSION['carrito'] as $item) {
                     <div>
                         <h1>Total: $<?php echo $total; ?></h1>
                         <form method="post">
-                            <button type="submit" name="confirmar_venta" class="btn btn-success btn-lg" style="font-size: 25px;">Confirmar Venta</button>
+                            <button type="submit" name="confirmar_venta" class="btn btn-success btn-lg" style="font-size: 30px;">CONFIRMAR VENTA</button>
                         </form>
                     </div>
                 </div>
@@ -131,22 +131,24 @@ foreach ($_SESSION['carrito'] as $item) {
                     </div>
 
                     <div class="card-body">
-                        <table class="table" id="carrito">
+                        <table class="table" id="carrito" style="font-size: 25px;">
                             <thead>
                                 <tr>
                                     <th>NOMBRE</th>
                                     <th>CANTIDAD</th>
                                     <th>PRECIO</th>
+                                    <th>TOTAL</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="font-size: 25px;">
                                 <?php
                                 foreach ($_SESSION['carrito'] as $item) {
                                     $producto_id = $item['id'];
                                     $producto_nombre = $item['nombre'];
                                     $producto_cantidad = $item['cantidad'];
                                     $producto_precio = $item['precio'];
+                                    $precio_total = $producto_precio * $producto_cantidad;
 
                                     echo "<tr>
                     <td>{$producto_nombre}</td>
@@ -164,10 +166,11 @@ foreach ($_SESSION['carrito'] as $item) {
                             </form>
                         </td>
                         <td>\${$producto_precio}</td>
+                        <td>\${$precio_total}</td>
                         <td>
                             <form method='post' style='display:inline;'>
                                 <input type='hidden' name='producto_id' value='{$producto_id}'>
-                                <button type='submit' name='quitar' class='btn btn-danger'>Quitar</button>
+                                <button type='submit' name='quitar' class='btn btn-danger' style='font-size: 25px;'>QUITAR</button>
                             </form>
                         </td>
                 </tr>";
