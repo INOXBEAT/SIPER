@@ -150,26 +150,26 @@ foreach ($_SESSION['carrito'] as $item) {
 
                                     echo "<tr>
                     <td>{$producto_nombre}</td>
-                    <td>
-                        <form method='post' style='display:inline;'>
-                            <input type='hidden' name='producto_id' value='{$producto_id}'>
-                            <input type='hidden' name='operacion' value='-'>
-                            <button type='submit' class='btn btn-secondary'>-</button>
-                        </form>
-                        {$producto_cantidad}
-                        <form method='post' style='display:inline;'>
-                            <input type='hidden' name='producto_id' value='{$producto_id}'>
-                            <input type='hidden' name='operacion' value='+'>
-                            <button type='submit' class='btn btn-secondary'>+</button>
-                        </form>
-                    </td>
-                    <td>\${$producto_precio}</td>
-                    <td>
-                        <form method='post' style='display:inline;'>
-                            <input type='hidden' name='producto_id' value='{$producto_id}'>
-                            <button type='submit' name='quitar' class='btn btn-danger'>Quitar</button>
-                        </form>
-                    </td>
+                        <td>
+                            <form method='post' style='display:inline;'>
+                                <input type='hidden' name='producto_id' value='{$producto_id}'>
+                                <input type='hidden' name='operacion' value='-'>
+                                <button type='submit' name='actualizar_cantidad' class='btn btn-secondary'>-</button>
+                            </form>
+                            {$producto_cantidad}
+                            <form method='post' style='display:inline;'>
+                                <input type='hidden' name='producto_id' value='{$producto_id}'>
+                                <input type='hidden' name='operacion' value='+'>
+                                <button type='submit' name='actualizar_cantidad' class='btn btn-secondary'>+</button>
+                            </form>
+                        </td>
+                        <td>\${$producto_precio}</td>
+                        <td>
+                            <form method='post' style='display:inline;'>
+                                <input type='hidden' name='producto_id' value='{$producto_id}'>
+                                <button type='submit' name='quitar' class='btn btn-danger'>Quitar</button>
+                            </form>
+                        </td>
                 </tr>";
                                 }
                                 ?>
@@ -213,22 +213,24 @@ foreach ($_SESSION['carrito'] as $item) {
         });
     });
 
+
+
     $(document).ready(function() {
     var calcularTotal = function() {
         var total = 0;
         $('#carrito tbody tr').each(function() {
             var precio = parseFloat($(this).find('td:eq(2)').text().replace('$', ''));
-            var cantidad = parseInt($(this).find('.cantidad').text()); // Asegúrate de obtener la cantidad correcta
+            var cantidad = parseInt($(this).find('.cantidad').text()); 
             total += precio * cantidad;
         });
         $('#total').text("Total: $" + total.toFixed(2));
     };
 
-    calcularTotal(); // Calcular el total al cargar la página
+    calcularTotal(); 
 
     $('#carrito tbody').on('click', 'button', function(e) {
-        var form = $(this).closest('form'); // Para obtener el formulario correspondiente
-        var cantidad_actual = parseInt($(this).closest('td').text().trim(), 10); // Ajustar el selector para obtener la cantidad actual
+        var form = $(this).closest('form'); 
+        var cantidad_actual = parseInt($(this).closest('td').text().trim(), 10); 
 
         if ($(this).text() === '+') {
             cantidad_actual++;
@@ -236,9 +238,12 @@ foreach ($_SESSION['carrito'] as $item) {
             cantidad_actual = Math.max(1, cantidad_actual - 1);
         }
 
-        form.siblings('.cantidad').text(cantidad_actual); // Asegurarse de actualizar la cantidad correcta
-        calcularTotal(); // Recalcular el total después de cada cambio
+        form.siblings('.cantidad').text(cantidad_actual); 
+        calcularTotal(); 
+
     });
 });
+
+
 
 </script>
