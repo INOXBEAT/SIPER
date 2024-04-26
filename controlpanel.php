@@ -136,6 +136,10 @@ mysqli_free_result($resultado);
                                     <a class="nav-link collapsed" href="usuarios.php">
                                         <i class="fa-solid fa-user" style="margin-right: 10px;"></i> Usuarios
                                     </a>
+
+                                    <a class="nav-link collapsed" href="historial_ventas.php">
+                                        <i class="fa-solid fa-circle-info" style="margin-right: 10px;"></i> Historial
+                                    </a>
                                 </nav>
                             </div>
 
