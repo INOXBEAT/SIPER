@@ -29,6 +29,17 @@ function quitarDelCarrito($producto_id)
     $_SESSION['carrito'] = array_values($_SESSION['carrito']);
 }
 
+function actualizarCantidadEnCarrito($producto_id, $nueva_cantidad)
+{
+    foreach ($_SESSION['carrito'] as $index => $item) {
+        if ($item['id'] == $producto_id) {
+            $_SESSION['carrito'][$index]['cantidad'] = $nueva_cantidad;
+            break;
+        }
+    }
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['agregar'])) {
         $producto = [
@@ -41,6 +52,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (isset($_POST['quitar'])) {
         $producto_id = $_POST['producto_id'];
         quitarDelCarrito($producto_id);
+    } elseif (isset($_POST['actualizar_cantidad'])) {
+        $producto_id = $_POST['producto_id'];
+        $operacion = $_POST['operacion'];
+
+        $cantidad_actual = 1;
+
+        foreach ($_SESSION['carrito'] as $item) {
+            if ($item['id'] == $producto_id) {
+                $cantidad_actual = $item['cantidad'];
+                break;
+            }
+        }
+
+        if (!isset($cantidad_actual)) {
+            $cantidad_actual = 1; 
+        }
+
+        if ($operacion == '+') {
+            $nueva_cantidad = $cantidad_actual + 1;
+        } elseif ($operacion == '-') {
+            $nueva_cantidad = max(1, $cantidad_actual - 1);
+        }
+
+        actualizarCantidadEnCarrito($producto_id, $nueva_cantidad);
     } elseif (isset($_POST['confirmar_venta'])) {
         foreach ($_SESSION['carrito'] as $item) {
             $query = "UPDATE productos SET cantidad = cantidad - {$item['cantidad']} WHERE id = {$item['id']}";
@@ -48,12 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 die("Error al actualizar inventario: " . mysqli_error($mysqli));
             }
         }
-
         $_SESSION['carrito'] = [];
-
         echo "<script>alert('Venta confirmada');</script>";
     }
 }
+
 
 $sql = "SELECT * FROM productos";
 $resultado = mysqli_query($mysqli, $sql);
@@ -78,7 +112,7 @@ foreach ($_SESSION['carrito'] as $item) {
         <main>
 
             <div class="container" style="position: sticky;">
-                <div class="container" >
+                <div class="container">
                     <div>
                         <h1>Total: $<?php echo $total; ?></h1>
                         <form method="post">
@@ -89,7 +123,7 @@ foreach ($_SESSION['carrito'] as $item) {
 
 
                 <div class="card" style="margin: 30px 20px;">
-                   
+
                     <div class="form-group">
                         <label for="buscar"></label>
                         <input type="text" class="form-control-lg" id="buscar" placeholder="Buscar producto..." style="font-size: 30px; padding: 10px 15px; width: 95%;">
@@ -97,8 +131,7 @@ foreach ($_SESSION['carrito'] as $item) {
                     </div>
 
                     <div class="card-body">
-
-                        <table class="table">
+                        <table class="table" id="carrito">
                             <thead>
                                 <tr>
                                     <th>NOMBRE</th>
@@ -110,22 +143,42 @@ foreach ($_SESSION['carrito'] as $item) {
                             <tbody>
                                 <?php
                                 foreach ($_SESSION['carrito'] as $item) {
+                                    $producto_id = $item['id'];
+                                    $producto_nombre = $item['nombre'];
+                                    $producto_cantidad = $item['cantidad'];
+                                    $producto_precio = $item['precio'];
+
                                     echo "<tr>
-                                    <td>{$item['nombre']}</td>
-                                    <td>{$item['cantidad']}</td>
-                                    <td>\${$item['precio']}</td>
-                                    <td>
-                                        <form method='post' style='display:inline;'>
-                                            <input type='hidden' name='producto_id' value='{$item['id']}'>
-                                            <button type='submit' name='quitar' class='btn btn-danger'>Quitar</button>
-                                        </form>
-                                    </td>
-                                  </tr>";
+                    <td>{$producto_nombre}</td>
+                    <td>
+                        <form method='post' style='display:inline;'>
+                            <input type='hidden' name='producto_id' value='{$producto_id}'>
+                            <input type='hidden' name='operacion' value='-'>
+                            <button type='submit' class='btn btn-secondary'>-</button>
+                        </form>
+                        {$producto_cantidad}
+                        <form method='post' style='display:inline;'>
+                            <input type='hidden' name='producto_id' value='{$producto_id}'>
+                            <input type='hidden' name='operacion' value='+'>
+                            <button type='submit' class='btn btn-secondary'>+</button>
+                        </form>
+                    </td>
+                    <td>\${$producto_precio}</td>
+                    <td>
+                        <form method='post' style='display:inline;'>
+                            <input type='hidden' name='producto_id' value='{$producto_id}'>
+                            <button type='submit' name='quitar' class='btn btn-danger'>Quitar</button>
+                        </form>
+                    </td>
+                </tr>";
                                 }
                                 ?>
                             </tbody>
                         </table>
                     </div>
+
+
+
                 </div>
         </main>
     </div>
@@ -159,4 +212,33 @@ foreach ($_SESSION['carrito'] as $item) {
             $('#resultados').html(resultados);
         });
     });
+
+    $(document).ready(function() {
+    var calcularTotal = function() {
+        var total = 0;
+        $('#carrito tbody tr').each(function() {
+            var precio = parseFloat($(this).find('td:eq(2)').text().replace('$', ''));
+            var cantidad = parseInt($(this).find('.cantidad').text()); // Asegúrate de obtener la cantidad correcta
+            total += precio * cantidad;
+        });
+        $('#total').text("Total: $" + total.toFixed(2));
+    };
+
+    calcularTotal(); // Calcular el total al cargar la página
+
+    $('#carrito tbody').on('click', 'button', function(e) {
+        var form = $(this).closest('form'); // Para obtener el formulario correspondiente
+        var cantidad_actual = parseInt($(this).closest('td').text().trim(), 10); // Ajustar el selector para obtener la cantidad actual
+
+        if ($(this).text() === '+') {
+            cantidad_actual++;
+        } else if ($(this).text() === '-') {
+            cantidad_actual = Math.max(1, cantidad_actual - 1);
+        }
+
+        form.siblings('.cantidad').text(cantidad_actual); // Asegurarse de actualizar la cantidad correcta
+        calcularTotal(); // Recalcular el total después de cada cambio
+    });
+});
+
 </script>
