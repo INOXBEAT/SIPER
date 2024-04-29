@@ -1,15 +1,19 @@
 <?php
 
 require 'controlpanel.php';
+require 'conexion.php';
+
+$resultado = $mysqli->query("SELECT * FROM historial");
 
 ?>
+
+
+
+
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-
-
-<h1>Módulo - Historial Ventas</h1>
 
 <div class="card card-secondary">
                 <div class="card-header">
@@ -22,11 +26,12 @@ require 'controlpanel.php';
                         <thead>
                             <tr>
                                 <th>FECHA</th>
-                                <th>HORA</th>
+                                <th>VENDEDOR</th>
                                 <th>PRODUCTO</th>
                                 <th>CANTIDAD</th>
-                                <th>PRECIO</th>
-                                <th>TOTAL</th>   
+                                <th>PRECIO UNIDAD</th>
+                                <th>TOTAL</th>
+                                <th>FORMA DE PAGO</th>    
                             </tr>
                         </thead>
                         <tbody style="font-size: 25px;">
@@ -37,11 +42,12 @@ require 'controlpanel.php';
 
                                 echo "<tr>
                         <td>{$fila['fecha']}</td>
-                        <td>{$fila['hora']}</td>
+                        <td>{$fila['usuario']}</td>
                         <td>{$fila['producto']}</td>
                         <td>{$fila['cantidad']}</td>
-                        <td>\${$fila['precio']}</td>
-                        <td>\${$fila['total']}</td>";
+                        <td>\${$fila['precio_unitario']}</td>
+                        <td>\${$fila['precio_total']}</td>
+                        <td>\${$fila['forma_pago']}</td>";
                                 
                                 echo "</tr>";
                             }
@@ -55,3 +61,14 @@ require 'controlpanel.php';
         </main>
     </div>
 </div>
+
+
+<?php
+
+
+if ($resultado) {
+    $resultado->close();
+}
+
+$mysqli->close();
+?>
