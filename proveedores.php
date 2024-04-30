@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($mysqli, $query)) {
         $alert_message = 'Proveedor registrado correctamente';
-            echo '<script>alert("' . $alert_message . '"); window.location.href = "proveedores.php";</script>';
+        echo '<script>alert("' . $alert_message . '"); window.location.href = "proveedores.php";</script>';
         header("Location: proveedores.php");
         exit();
     } else {
@@ -34,10 +34,16 @@ if (!$resultado) {
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="card card-success">
+            <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title" style="font-size: 40px;"><b>LISTADO DE PROVEEDORES</b></h3>
-                    <div class="card-tools">
+                    <div class="card-tools" style="display: flex; align-items: center;">
+
+                        <div class="acciones" style="margin-right: 30px;">
+                            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
+                            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
+                        </div>
+
                         <?php
                         if ($tipo_usuario == 1) { ?>
 
@@ -45,16 +51,16 @@ if (!$resultado) {
                         <?php } ?>
                     </div>
                 </div>
-                
+
                 <div class="card-body">
                     <table id="datatablesSimple" style="font-size: 20px;">
                         <thead>
                             <tr>
-                                <th>Contacto</th>
-                                <th>Dirección</th>
-                                <th>Empresa</th>
-                                <th>Teléfono</th>
-                                <th>Acciones</th>
+                                <th>CONTACTO</th>
+                                <th>DIRECCIÓN</th>
+                                <th>EMPRESA</th>
+                                <th>TELÉFONO</th>
+                                <th>ACCIONES</th>
                             </tr>
                         </thead>
                         <tbody>

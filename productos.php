@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($mysqli, $query)) {
         $alert_message = 'Producto registrado correctamente';
-            echo '<script>alert("' . $alert_message . '"); window.location.href = "productos.php";</script>';
+        echo '<script>alert("' . $alert_message . '"); window.location.href = "productos.php";</script>';
         header("Location: productos.php");
         exit();
     } else {
@@ -35,7 +35,13 @@ if (!$resultado) {
             <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title" style="font-size: 40px;"><b>LISTADO DE PRODUCTOS</b></h3>
-                    <div class="card-tools">
+                    <div class="card-tools" style="display: flex; align-items: center;">
+
+                        <div class="acciones" style="margin-right: 30px;">
+                            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
+                            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
+                        </div>
+
                         <?php
                         if ($tipo_usuario == 1) { ?>
 

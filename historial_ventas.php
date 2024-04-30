@@ -19,6 +19,11 @@ $resultado = $mysqli->query("SELECT * FROM historial");
                 <div class="card-header">
                     <h3 class="card-title" style="font-size: 40px;"><b>HISTORIAL DE VENTAS</b></h3>
                   
+                    <div class="acciones" style="margin-right: 30px; display:flex; align-items:center; justify-content:right;">
+                            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
+                            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
+                        </div>
+
                 </div>
 
                 <div class="card-body">

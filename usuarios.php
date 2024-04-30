@@ -31,6 +31,11 @@ $resultado = $mysqli->query($sql);
         <main>
             <div class="container-fluid">
                 <h1 class="mt-4">USUARIOS</h1>
+
+                <div class="acciones" style="display: flex; justify-content: flex-end; margin-right: 40px;">
+                            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
+                            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
+                        </div>
                 
                 <!-- Botón para agregar nuevo usuario (solo visible para administradores) -->
                 <?php if ($tipo_usuario == 1) { ?>
