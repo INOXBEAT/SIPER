@@ -15,14 +15,15 @@ $resultado = $mysqli->query("SELECT * FROM historial");
     <div id="layoutSidenav_content">
         <main>
 
-<div class="card card-secondary">
+            <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title" style="font-size: 40px;"><b>HISTORIAL DE VENTAS</b></h3>
-                  
+                    <div class="card-tools" style="display: flex; align-items: center;"></div>
+
                     <div class="acciones" style="margin-right: 30px; display:flex; align-items:center; justify-content:right;">
-                            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
-                            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
-                        </div>
+                        <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
+                        <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
+                    </div>
 
                 </div>
 
@@ -36,13 +37,13 @@ $resultado = $mysqli->query("SELECT * FROM historial");
                                 <th>CANTIDAD</th>
                                 <th>PRECIO UNIDAD</th>
                                 <th>TOTAL</th>
-                                <th>FORMA DE PAGO</th>    
+                                <th>FORMA DE PAGO</th>
                             </tr>
                         </thead>
                         <tbody style="font-size: 25px;">
                             <?php
                             while ($fila = mysqli_fetch_assoc($resultado)) {
-                                
+
                                 $total = $fila['cantidad'] * $fila['precio'];
 
                                 echo "<tr>
@@ -53,7 +54,7 @@ $resultado = $mysqli->query("SELECT * FROM historial");
                         <td>\${$fila['precio_unitario']}</td>
                         <td>\${$fila['precio_total']}</td>
                         <td>\${$fila['forma_pago']}</td>";
-                                
+
                                 echo "</tr>";
                             }
                             ?>

@@ -1,8 +1,6 @@
 <?php
 
 require 'controlpanel.php';
-
-session_start();
 require 'conexion.php';
 
 if (!isset($_SESSION['id'])) {
@@ -29,20 +27,20 @@ $resultado = $mysqli->query($sql);
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">
-                <h1 class="mt-4">USUARIOS</h1>
 
-                <div class="acciones" style="display: flex; justify-content: flex-end; margin-right: 40px;">
+        <div class="card card-secondary">
+                <div class="card-header">
+                    <h3 class="card-title" style="font-size: 40px;"><b>LISTADO DE USUARIOS</b></h3>
+                    <div class="card-tools" style="display: flex; align-items: center;">
+
+                        <div class="acciones" style="margin-right: 30px;">
                             <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
                             <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
                         </div>
-                
-                <!-- Botón para agregar nuevo usuario (solo visible para administradores) -->
-                <?php if ($tipo_usuario == 1) { ?>
-                    <a href="form_agregar_usuario.php" class="btn btn-success btn-lg mb-3" style="font-size: 25px;">AGREGAR NUEVO USUARIO</a>
-                <?php } ?>
+                    </div>
+                </div>
+        </div>
 
-                <div class="card bg-success">
                     <div class="card-body bg-light">
                         <table id="datatablesSimple" style="font-size: 25px;">
                             <thead>

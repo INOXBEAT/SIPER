@@ -1,8 +1,6 @@
 <?php
 require 'controlpanel.php';
 
-session_start();
-
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
@@ -111,8 +109,14 @@ foreach ($_SESSION['carrito'] as $item) {
     <div id="layoutSidenav_content">
         <main>
 
+        <div class="card card-secondary">
+                <div class="card-header">
+                    <h3 class="card-title" style="font-size: 40px;"><b>VENTAS</b></h3>
+                    <div class="card-tools" style="display: flex; align-items: center;"></div>
+                </div>
+
             <div class="container" style="position: sticky;">
-                <div class="container">
+                <div class="container" style="margin-top: 40px;">
                     <div>
                         <h1>Total: $<?php echo $total; ?></h1>
                         <form method="post">
