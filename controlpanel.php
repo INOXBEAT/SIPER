@@ -63,11 +63,11 @@ mysqli_free_result($resultado);
         <!-- TOP NAVBAR -->
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw" style="padding-left: 12px;"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw" style="padding-left: 12px; font-size: 25px"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li style="text-align: center; font-size: 25px;"><?php echo $nombre; ?></li>
+                    <li style="text-align: center; font-size: 20px;"><?php echo $nombre; ?></li>
                     <hr class="dropdown-divider">
-                    <li><a class="dropdown-item" href="logout.php" style="text-align: center;">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="logout.php" style="text-align: center;">CERRAR SESIÓN</a></li>
                 </ul>
             </li>
         </ul>
