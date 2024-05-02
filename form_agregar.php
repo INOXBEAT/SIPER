@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
         <main>
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title" style="font-size: 30px;"><b>AGREGAR PRODUCTO</b></h3>
+                    <h3 class="card-title" style="font-size: 40px;"><b>AGREGAR PRODUCTO</b></h3>
                 </div>
 
                 <div class="card card-success">

@@ -41,8 +41,8 @@ $resultado = $mysqli->query($sql);
                 </div>
         </div>
 
-                    <div class="card-body bg-light">
-                        <table id="datatablesSimple" style="font-size: 25px;">
+                    <div class="card-body" style="margin: 15px;">
+                        <table id="datatablesSimple" style="font-size: 25px" >
                             <thead>
                                 <tr>
                                     <th>USUARIO</th>
@@ -72,8 +72,8 @@ $resultado = $mysqli->query($sql);
                                         <td><?php echo $row['tipo_usuario']; ?></td>
                                         <?php if ($tipo_usuario == 1) { ?>
                                             <td>
-                                                <a href="editar_usuario.php?id=<?php echo $row['id']; ?>" style="font-size: 25px;" class="btn btn-primary">Editar</a>
-                                                <a href="eliminar_usuario.php?id=<?php echo $row['id']; ?>" style="font-size: 25px;" class="btn btn-danger" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">Eliminar</a>
+                                                <a href="editar_usuario.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Editar</a>
+                                                <a href="eliminar_usuario.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">Eliminar</a>
                                             </td>
                                         <?php } ?>
                                     </tr>
@@ -81,7 +81,8 @@ $resultado = $mysqli->query($sql);
                             </tbody>
                         </table>
                     </div>
-                </div>
+
+                
             </div>
         </main>
     </div>
