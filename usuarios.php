@@ -37,6 +37,9 @@ $resultado = $mysqli->query($sql);
                             <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 60px; height: 60px;"></a>
                             <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 60px; height: 60px;"></a>
                         </div>
+
+                        <a class="btn btn-success btn-lg" href="form_agregar_usuario.php" role="button" style="font-size: 30px;"><b>AGREGAR NUEVO USUARIO</b></a>
+
                     </div>
                 </div>
         </div>
