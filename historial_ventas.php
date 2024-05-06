@@ -7,10 +7,6 @@ $resultado = $mysqli->query("SELECT * FROM historial");
 
 ?>
 
-
-
-
-
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
         <main>
@@ -44,11 +40,11 @@ $resultado = $mysqli->query("SELECT * FROM historial");
                             <?php
                             while ($fila = mysqli_fetch_assoc($resultado)) {
 
-                                $total = $fila['cantidad'] * $fila['precio'];
+                                $total = $fila['cantidad'] * $fila['precio_unitario'];
 
                                 echo "<tr>
                         <td>{$fila['fecha']}</td>
-                        <td>{$fila['usuario']}</td>
+                        <td>{$fila['vendedor']}</td>
                         <td>{$fila['producto']}</td>
                         <td>{$fila['cantidad']}</td>
                         <td>\${$fila['precio_unitario']}</td>
