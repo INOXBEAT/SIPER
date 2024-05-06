@@ -5,7 +5,7 @@ require 'conexion.php';
 
 if (!isset($_SESSION['id'])) {
     header("Location: index.php");
-}
+}   
 
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $nombre = $_SESSION['nombre'];
