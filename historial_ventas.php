@@ -3,6 +3,10 @@
 require 'controlpanel.php';
 require 'conexion.php';
 
+
+date_default_timezone_set('America/Bogota');
+
+
 $resultado = $mysqli->query("SELECT * FROM historial");
 
 ?>
