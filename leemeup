@@ -9,13 +9,41 @@
 --- Se realizan las pruebas del CRUP proveedores
 */
 
-credenciales para el ingreso
+Visita el https://github.com/INOXBEAT/SIPER donde encontrarás el repositorio de este sistema
 
-COMO ADMINISTRADOR
+--PROPÓSITO DE LA APLICACIÓN
+
+    SIPER (Sistema de Información para la Papelería El Radar) es una aplicación web diseñada para simplificar y optimizar la gestión de inventarios en una papelería pequeña, facilitando las tareas diarias para el propietario, un adulto mayor.
+
+    El propósito principal de SIPER es proporcionar una herramienta fácil de usar y eficaz para administrar el inventario de la papelería, permitiendo al propietario llevar un control detallado de sus productos, ventas y stock. Al centralizar la gestión del inventario en un sistema web, SIPER permite que el propietario pueda monitorear la cantidad de productos en stock, ver las entradas y salidas de inventario, y realizar ajustes según sea necesario.
+
+    La aplicación está diseñada con una interfaz simple e intuitiva, asegurando que incluso usuarios con poca experiencia tecnológica puedan utilizarla con facilidad.
+
+    SIPER permite al propietario registrar las ventas diarias y las compras de nuevos productos, proporcionando un historial claro de transacciones.
+
+    La aplicación puede generar informes de inventario, ayudando al propietario a tomar decisiones informadas sobre pedidos y reabastecimiento.
+
+--RECOMENDACIONES DE USO
+
+1. se recomienda usar el paquete XAMPP para el uso de la aplicación
+2. se recomienda usar el navegador Google Chrome
+3. se recomienda usar el editor de código Visual Studio Code
+4. se recomienda contar con tecnologías como PHP, mysqli, JavaScript, HTML y CSS, bootstrap, adminLTE
+
+--PARA EJECUTAR EL PROGRAMA
+
+1. Abre XAMMP y das inicio a Apache y a Mysql a través del botón 'start'
+2. Abre tu navegador de preferencia (sugerimos Google Chrome)
+3. Ingresa a http://localhost/sistema/index.php
+4. Ingresar las credenciales que encontrarás en la sección --CREDENCIALES DE INGRESO
+5. Explora la aplicación
+
+
+--CREDENCIALES DE INGRESO
+
+ADMINISTRADOR CON ACCESO TOTAL
 admin / admin
 
-COMO USUARIO ESTANDAR
+USUARIO ESTANDAR CON ACCESO LIMITADO
 usuario / usuario
 
-REPOSITORIO DE GITHUB
-https://github.com/INOXBEAT/SIPER
