@@ -15,5 +15,3 @@ if ($mysqli->connect_errno) {
 if (!$mysqli->set_charset($charset)) {
     throw new Exception("Error al configurar el conjunto de caracteres: " . $mysqli->error);
 }
-
-?>
